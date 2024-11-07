@@ -1,0 +1,113 @@
+﻿<Window x:Class="Interfaces_Nomina.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interfaces_Nomina"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="900" Background="#020611">
+    <Window.Resources>
+        <!-- Estilo para ModernMenuButton -->
+        <Style x:Key="ModernMenuButton" TargetType="Button">
+            <Setter Property="Background" Value="#343b57"/>
+            <Setter Property="Foreground" Value="#f4feff"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="10,5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#65ade8"/>
+                    <Setter Property="Foreground" Value="#020611"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Estilo para ModernTextBox -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#343b57"/>
+            <Setter Property="Foreground" Value="#f4feff"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="3">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Estructura Principal -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="411*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <!-- Definición de Columnas -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <!-- Menú de navegación -->
+            <ColumnDefinition Width="*"/>
+            <!-- Contenido principal -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Menú de navegación -->
+        <StackPanel Background="#020611" Grid.Column="0" Grid.RowSpan="3" Margin="0,0,646,0" Grid.ColumnSpan="2">
+            <TextBlock Text="Paymind" 
+                 Foreground="#f4feff"
+                 FontSize="20" 
+                 Margin="10" 
+                 VerticalAlignment="Top"/>
+
+            <Button x:Name="BtnPlanilla" Content="Planilla" Style="{StaticResource ModernMenuButton}" Click="BtnClick_Click"/>
+            <Button x:Name="BtnNominaM" Content="Nomina Mensual" Style="{StaticResource ModernMenuButton}" Click="BtnNominaM_Click"/>
+            <Button x:Name="BtnAgregarDeducciones_Ingresos" Content="Añadir Deducciones y Ingresos" Style="{StaticResource ModernMenuButton}" Click="BtnAgregarDeducciones_Ingresos_Click"/>
+            <Button x:Name="BtnCrearDeduccionesEingresos" Content="Crear Deducciones e ingresos" Style="{StaticResource ModernMenuButton}" Click="BtnCrearDeduccionesEingresos_Click"/>
+        </StackPanel>
+
+        <!-- Área de contenido principal -->
+        <Grid Grid.Column="1" Background="#f4feff" Name="MainContentArea" Grid.RowSpan="3" Margin="54,0,0,0">
+            <!--Usar x Evento para cargar las ventanas de los botones en el panel-->
+
+            <!-- Panel de registro de empleados -->
+            <StackPanel Name="RegistroEmpleadosPanel" Visibility="Collapsed" Margin="20">
+                <TextBlock Text="Registro de Empleados" FontSize="24" Foreground="#65ade8" Margin="0,0,0,20"/>
+
+                <!-- Campos de entrada -->
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Primer Nombre" Foreground="#65ade8"/>
+                    <TextBox Style="{StaticResource ModernTextBox}" Tag="Primer Nombre"/>
+
+                    <TextBlock Text="Segundo Nombre" Foreground="#65ade8"/>
+                    <TextBox Style="{StaticResource ModernTextBox}" Tag="Segundo Nombre"/>
+
+                    <!-- Agrega más campos según sea necesario -->
+                </StackPanel>
+
+                <!-- Botones de acción -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button Content="Guardar" Style="{StaticResource ModernMenuButton}"/>
+                    <Button Content="Cancelar" Style="{StaticResource ModernMenuButton}" Margin="10,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
