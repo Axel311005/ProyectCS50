@@ -12,7 +12,7 @@
             HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,20"/>
 
         <!-- Contenedores de TextBox con barra de fondo personalizada -->
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Margin="0,50,0,0">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Margin="226,67,0,0">
 
             <!-- Usuario -->
             <StackPanel Margin="0,0,0,10">
@@ -44,7 +44,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <!-- Botón de Crear -->
                 <Button x:Name="BtnAgregarCuenta" Width="120" Height="40" Background="#65ade8" Foreground="#020611" 
-                 Content="Crear Cuenta" FontWeight="Bold" Margin="5,0" Click="BtnAgregarCuenta_Click"/>
+                 Content="Crear Cuenta" FontWeight="Bold" Click="BtnAgregarCuenta_Click"/>
+                <!-- Botón de Crear -->
 
             </StackPanel>
         </StackPanel>
